@@ -2,6 +2,8 @@
 
 This plugin lets Slack users publish posts from any (non-private) Slack channel to a Kirby website.
 
+![screenshot](screenshot.png)
+
 ## Installation
 
 Download the plugin from GitHub and put its contents into `site/plugins/slack`.
@@ -63,15 +65,15 @@ following information:
 * `Author` – The real name of the user who created the post
 * `Avatar` – The name of the author's avatar image (`<user-id>.jpg`)
 * `Comment` – The posts text (containing the link) converted into HTML
-* `Slack` – A marker that is always set to `1` and can be used to identify Slack posts (see below)
+* `Slack` – A marker that is always set to `1` and can be used to identify Slack posts
 
-In your templates you can use the following code to retrieve all published Slack posts:
+## Displaying posts
 
-```php
-$posts = $page->images()->filterBy('slack', '1')->sortBy('filename', 'desc');
-```
+To display posts on your website copy [snippets/slack.php](snippets/slack.php) to your `site/snippets` folder and customize it as needed.
 
-## Panel blueprint
+To add some basic styling that mimics Slacks's internal layout add the rules from [assets/slack.css](assets/slack.css) to your stylesheet.
+
+## Editing posts
 
 In order to edit posts via the Kirby panel you can add the following file-fields to the blueprint of your page:
 
@@ -98,11 +100,6 @@ files:
       label: Comment
       type: textarea
 ```
-
-## Slack integration
-
-Goto to your team's Slack integrations page and set up a command
-that POSTs to http(s)://example.com/hooks/slack.
 
 ## Ideas
 

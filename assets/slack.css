@@ -1,0 +1,54 @@
+
+/* Example styles to format Slack posts
+-------------------------------------------------- */
+.slack {
+  position: relative;
+  font-size: 15px;
+  line-height: 1.4;
+  margin-bottom: 40px;
+  max-width: 600px;
+}
+.slack__avatar {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border-radius: 3px;
+}
+.slack__post {
+  margin-left: 50px;
+}
+.slack__meta {
+  line-height: 1.2;
+}
+.slack__author {
+  font-weight: bold;
+}
+.slack__date {
+  color: #888;
+  font-size: 12px;
+}
+.slack__attachment {
+  margin-top: 8px;
+  border-left: 4px solid #e4e4e4;
+  padding-left: 12px;
+}
+.slack a {
+  text-decoration: none;
+  border-bottom: none;
+  color: #317fb7;
+}
+.slack a:hover {
+  text-decoration: underline;
+  color: #48a0dd;
+}
+.slack__title {
+  display: block;
+  text-decoration: none;
+  font-weight: bold;
+  color: #2a80b9;
+}
+.slack__image {
+  display: block;
+  margin-top: 6px;
+  border-radius: 3px;
+}
