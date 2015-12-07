@@ -107,10 +107,11 @@ class slack {
       'title' => $a['title'],
       'date' => date('d.m.Y', $m['ts']),
       'description' => @$a['text'],
-      'linkUrl' => $a['from_url'],
+      'linkurl' => $a['from_url'],
       'author' => $user['user']['profile']['real_name'],
       'avatar' => $m['user'] . '.jpg',
-      'comment' => static::format(@$m['text'])
+      'comment' => static::format(@$m['text']),
+      'slack' => '1'
     ];
 
     data::write($file.'.txt', $meta, 'kd');
