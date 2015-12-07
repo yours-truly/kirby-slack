@@ -2,7 +2,19 @@
 
 This plugin lets Slack users publish posts from any (non-private) Slack channel to a Kirby website.
 
-![screenshot](screenshot.png)
+## Usage
+
+Type `/publish [keyword]` in a Slack channel to publish the last post containing the given keyword. If the keyword is omitted, the most recent post is used.
+
+__Note:__ The plugin only accepts posts that have a preview image. If you try to publish a text-only post slackbot will refuse it:
+
+![screenshot](screenshots/error.png)
+
+## Preview
+
+If you follow the setup instructions below you'll end up with something like this:
+
+![screenshot](screenshots/example.png)
 
 ## Installation
 
@@ -30,7 +42,7 @@ Goto to your team's Slack integrations page and set choose __Slash Commands__ fr
 
 Set up the integration like this:
 
-![Screenshot](settings.png)
+![Screenshot](screenshots/settings.png)
 
 The __URL__ field must point to your website and include the name
 (and optionally the language) of the page where the posts should be
