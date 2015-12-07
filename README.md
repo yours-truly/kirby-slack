@@ -4,9 +4,25 @@ This plugin lets Slack users publish posts from any (non-private) Slack channel 
 
 ## Installation
 
-Download the plugin from GitHub and put it in your `site/plugins` folder.
+Download the plugin from GitHub and put its contents into `site/plugins/slack`.
 
-## Slack integration
+Or add it as Git submodule:
+
+    git submodule add https://github.com/yours-truly/kirby-slack.git site/plugins/slack
+
+## Local quickstart
+
+Start your kirby server:
+
+    php -S 0.0.0.0:8080
+
+In a second terminal [set up a tunnel](https://ngrok.com/) to expose your local server:
+
+    ngrok 8080
+
+
+
+## Configuration
 
 Goto to your team's Slack integrations page and set choose __Slash Commands__ from the _DIY Integrations & Customizations_ section.
 
@@ -20,7 +36,7 @@ stored. The format is:
 
 `http(s)://<domain>.<tld>/hooks/slack/<page-name>[.lang]`
 
-Copy the generated __Token__ and add it to your `config.php`:
+Copy the generated __Token__ and add it to you `site/config/config.php`:
 
 ```php
 c::set('slack.verify', '<insert your verification token here>');
@@ -31,7 +47,7 @@ The `slack.auth` token can be obtained by visiting https://api.slack.com/web
 
 With this _full-access token_ the plugin will query the Slack Web API to retrieve the actual post and its attachments.
 
-## Kirby integration
+## How it works
 
 The plugin (when set up as Slack command integration) will look for the last post that contains the given _keyword_ and download the first attached image or video thumbnail.
 
@@ -41,7 +57,7 @@ Along side the downloaded image a `.txt` will be stored that contains the
 following information:
 
 * `Date` – The post's formatted date (DD.MM.YYYY)
-* `LinkUrl` – The external link
+* `Linkurl` – The external link
 * `Title` – The attachment's title
 * `Description` – The meta description of the linked page
 * `Author` – The real name of the user who created the post
@@ -52,17 +68,8 @@ following information:
 In your templates you can use the following code to retrieve all published Slack posts:
 
 ```php
-$posts = $page->images()->filterBy('slack', 1)->sortBy('filename', 'desc');
+$posts = $page->images()->filterBy('slack', '1')->sortBy('filename', 'desc');
 ```
-
-## Kirby configuration
-
-In order to make things work you need to provide some settings in your project's `config.php`:
-
-* `slack.route` – The URL called by the Slack integration. Defaults to `'hooks/slack'`
-* `slack.page` – The id of an existing page where the posts are stored. _(Required)_ 
-* `slack.verify` – The token that was generated (or manually entered) during the Slack integration setup. _(Required)_
-* `slack.auth` – The secret auth token that is used to query the Slack API. _(Required)_
 
 ## Panel blueprint
 
@@ -80,7 +87,7 @@ files:
       label: Description
       type: textarea
     link:
-      label: Link
+      label: Linkurl
       type: url
     author:
       label: Author
